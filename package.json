@@ -1,0 +1,21 @@
+{
+  "name": "gatetrackerbackend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start:dev": "nodemon ./bin/www --ignore client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "mariadb": "^2.0.3",
+    "morgan": "~1.9.0",
+    "mysql2": "^1.6.4",
+    "sequelize": "^5.0.0-beta.16",
+    "sequelize-cli": "^5.4.0"
+  }
+}

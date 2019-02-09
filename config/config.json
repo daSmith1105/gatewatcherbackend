@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "root",
+    "password": "root",
+    "database": "monarch",
+    "host": "localhost",
+    "dialect": "mariadb",
+    "port": "3306" 
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "localhost",
+    "dialect": "mariadb",
+    "port": "8080" 
+  },
+  "production": {
+    "username": "root",
+    "password": "lynn1094",
+    "database": "monarch",
+    "host": "localhost",
+    "dialect": "mariadb",
+    "port": "8080" 
+  }
+}

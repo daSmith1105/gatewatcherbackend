@@ -11,16 +11,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(20),
       defaultValue: ''
     },
-    sPhone: {
-      allowNull: false,
-      type: DataTypes.STRING(12),
-      defaultValue: ''
-    },
-    sEmail: {
-      allowNull: false,
-      type: DataTypes.STRING(65),
-      defaultValue: ''
-    },
     sUsername: {
       allowNull: false,
       type: DataTypes.STRING(60),
@@ -31,18 +21,28 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(65),
       defaultValue: ''
     },
-    fAdmin: {
-      allowNull: false,
-      type: DataTypes.TINYINT(1),
-      defaultValue: 0
-    }
-  }, {});
+  }, {
+    paranoid: true,
+    timestamps: true,
+  });
   GateUser.associate = (models) => {
     // associations can be defined here
     GateUser.belongsTo(models.GateCustomer, {
-      foreignKey: 'bCustomerID',
-      onDelete: 'CASCADE',
+      foreignKey: 'bCustomerID'
+    });
+    GateUser.belongsTo(models.GateAcl, {
+      foreignKey: 'bAuthID'
+    });
+    GateUser.hasMany(models.GateEvent, {
+      foreignKey: 'bUserID'
+    });
+    GateUser.hasOne(models.GateAssignment, {
+      foreignKey: 'bUserID',
     });
   };
+
+  GateUser.create({ id: 1, bAuthID: 1, bCustomerID: 1, sFirstName: 'Dividia', sLastName: 'Technologies', sUsername: 'dividia', sPassword: 'rda2245' })
+  GateUser.create({ id: 2, bAuthID: 1, bCustomerID: 1, sFirstName: 'Master', sLastName: 'Admin', sUsername: 'master', sPassword: 'master' })
+
   return GateUser;
 };

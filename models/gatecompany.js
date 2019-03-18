@@ -3,65 +3,31 @@ module.exports = (sequelize, DataTypes) => {
   const GateCompany = sequelize.define('GateCompany', {
     sName: {
       allowNull: false,
-      type: DataTypes.STRING(60),
+      type: DataTypes.STRING(100),
       defaultValue: ''
     },
-    sStreet: {
+    fFlagged: {
       allowNull: false,
-      type: DataTypes.STRING(20),
-      defaultValue: ''
+      type: DataTypes.TINYINT(1),
+      defaultValue: 0
     },
-    sStreet2: {
-        allowNull: false,
-        type: DataTypes.STRING(20),
-        defaultValue: ''
-      },
-    sCity: {
-      allowNull: false,
-      type: DataTypes.STRING(12),
-      defaultValue: ''
-    },
-    sState: {
-      allowNull: false,
-      type: DataTypes.STRING(16),
-      defaultValue: ''
-    },
-    sCountry: {
-      allowNull: false,
-      type: DataTypes.STRING(20),
-      defaultValue: ''
-    },
-    sPhone: {
-      allowNull: false,
-      type: DataTypes.STRING(12),
-      defaultValue: ''
-    },
-    sEmail: {
-      allowNull: false,
-      type: DataTypes.STRING(65),
-      defaultValue: ''
-    },
-    sContactFirstName: {
-      allowNull: false,
-      type: DataTypes.STRING(20),
-      defaultValue: ''
-    },
-    sContactLastName: {
-        allowNull: false,
-        type: DataTypes.STRING(20),
-        defaultValue: ''
-    },
-  }, {});
-  
+  }, {
+    paranoid: true,
+    timestamps: true
+  });
   GateCompany.associate = (models) => {
-    // associations can be defined here
-    GateCompany.hasMany(models.GateDriver, {
-        foreignKey: 'bCompanyID',
-        as: 'gatedrivers',
-    });
+    // associations can be defined here 
     GateCompany.belongsTo(models.GateCustomer, {
-      foreignKey: 'bCustomerID',
-      onDelete: 'CASCADE',
+      foreignKey: 'bCustomerID'
+    });
+    GateCompany.hasMany(models.GateEvent, {
+      foreignKey: 'bCompanyID'
+    });
+    GateCompany.hasMany(models.GatePerson, {
+      foreignKey: 'bCompanyID'
+    });
+    GateCompany.hasMany(models.GateLPN, {
+      foreignKey: 'bCompanyID'
     });
   };
   return GateCompany;

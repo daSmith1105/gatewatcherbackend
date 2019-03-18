@@ -18,24 +18,39 @@ module.exports = (sequelize, DataTypes) => {
     },
     fPublic: {
       allowNull: false,
-      type: DataTypes.TINYINT,
+      type: DataTypes.TINYINT(1),
       defaultValue: 1
-    }
-  }, {});
+    },
+  }, {
+    paranoid: true,
+    timestamps: true,
+  });
   GateCustomer.associate = (models) => {
     // associations can be defined here
-    GateCustomer.hasMany(models.GateUser, {
-      foreignKey: 'bCustomerID',
-      as: 'gateusers',
-    });
-    GateCustomer.hasMany(models.Gate, {
-      foreignKey: 'bCustomerID',
-      as: 'gates',
+    GateCustomer.hasMany(models.GateEvent, {
+      foreignKey: 'bCustomerID'
     });
     GateCustomer.hasMany(models.GateCompany, {
-      foreignKey: 'bCustomerID',
-      as: 'gatecompanies',
+      foreignKey: 'bCustomerID'
+    });
+    GateCustomer.hasMany(models.Gate, {
+      foreignKey: 'bCustomerID'
+    });
+    GateCustomer.hasMany(models.GateLPN, {
+      foreignKey: 'bCustomerID'
+    });
+    GateCustomer.hasMany(models.GateUser, {
+      foreignKey: 'bCustomerID'
+    });
+    GateCustomer.hasMany(models.GateAssignment, {
+      foreignKey: 'bCustomerID'
+    });
+    GateCustomer.hasMany(models.GatePerson, {
+      foreignKey: 'bCustomerID'
     });
   };
+
+  GateCustomer.create({ id: 1, sName: 'Test', sDir:'test', sDomain: 'test', fPublic: 0 })
+
   return GateCustomer;
 };

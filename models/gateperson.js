@@ -32,9 +32,6 @@ module.exports = (sequelize, DataTypes) => {
     GatePerson.belongsTo(models.GateGroup, {
       foreignKey: 'bGroupID'
     });
-    GatePerson.belongsTo(models.GateLPN, {
-      foreignKey: 'bLpnID'
-    });
     GatePerson.belongsTo(models.GateCompany, {
       foreignKey: 'bCompanyID'
     });

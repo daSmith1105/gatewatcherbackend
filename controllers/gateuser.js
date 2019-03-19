@@ -43,7 +43,7 @@ module.exports = {
               { model: GateCustomer, attributes: [ 'id', 'sName', 'deletedAt'], paranoid: false },
               { model: GateAcl, attributes: [ 'id', 'sName' ], paranoid: false }
             ],
-            paranoid: false
+            // paranoid: false
           })
           .then(gateuser => {
             if (!gateuser) {
@@ -90,7 +90,7 @@ module.exports = {
                { model: GateCustomer, attributes: [ 'id', 'sName', 'deletedAt'], paranoid: false },
                { model: GateAssignment, attributes: [ 'id', 'bGateID', 'deletedAt'], paranoid: false },
              ],
-             paranoid: false
+            //  paranoid: false
            })
           .then(gateuser => {
             if (!gateuser) {

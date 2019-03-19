@@ -46,7 +46,7 @@ module.exports = {
               { model: GateCompany, attributes: [ 'id', 'sName' ] },
               { model: GateCustomer, attributes: [ 'id', 'sName' ]},
               { model: GateGroup, attributes: [ 'id', 'sName' ] },
-              { model: GateLPN, attributes: [ 'id', 'sLPN' ] },
+              // { model: GateLPN, attributes: [ 'id', 'sLPN' ] },
             ],
              paranoid: false
            })
@@ -70,7 +70,7 @@ module.exports = {
               { model: GateCompany, attributes: [ 'id', 'sName' ] },
               { model: GateCustomer, attributes: [ 'id', 'sName' ] },
               { model: GateGroup, attributes: [ 'id', 'sName' ] },
-              { model: GateLPN, attributes: [ 'id', 'sLPN' ] },
+              // { model: GateLPN, attributes: [ 'id', 'sLPN' ] },
             ],
             paranoid: false
           })
@@ -105,12 +105,12 @@ module.exports = {
       listAll(req, res) {
         return GatePerson
           .findAndCountAll({
-            attributes: [ 'id', 'sFirstName', 'sLastName', 'fFlagged', 'deletedAt'],
+            attributes: [ 'id', 'sFirstName', 'sLastName', 'fFlagged', 'deletedAt', 'bLpnID' ],
             include: [
               { model: GateCompany, attributes: [ 'id', 'sName' ] },
               { model: GateCustomer, attributes: [ 'id', 'sName' ]},
               { model: GateGroup, attributes: [ 'id', 'sName' ] },
-              { model: GateLPN, attributes: [ 'id', 'sLPN' ] },
+              // { model: GateLPN, attributes: [ 'id', 'sLPN' ] },
             ],
             paranoid: false
           })

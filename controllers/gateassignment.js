@@ -37,7 +37,7 @@ module.exports = {
                 { model: GateUser, attributes: [ 'id', 'sFirstName', 'sLastName', 'deletedAt' ], paranoid: false },
                 { model: Gate, attributes: [ 'id', 'sName', 'deletedAt' ], paranoid: false },
             ],
-            paranoid: false
+            // paranoid: false
         })
         .then(gateassignment => {
             if (!gateassignment) {
